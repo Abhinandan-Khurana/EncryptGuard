@@ -31,6 +31,7 @@ func main() {
 }
 
 func printHelp() {
+	fmt.Println("")
 	fmt.Println("File Encryption")
 	fmt.Println("")
 	fmt.Println("Usage:")
@@ -39,9 +40,9 @@ func printHelp() {
 	fmt.Println("")
 	fmt.Println("Commands:")
 	fmt.Println("")
-	fmt.Println("\t Encrypt:\tEncrypt a file given a password")
+	fmt.Println("\tEncrypt:\tEncrypt a file given a password")
 	fmt.Println("\tDecrypt:\tDecrypt a file using a password")
-	fmt.Println("\tHelp:\tDisplays help description")
+	fmt.Println("\tHelp:\t\tDisplays help description")
 	fmt.Println("")
 }
 
