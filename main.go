@@ -47,7 +47,7 @@ func printHelp() {
 
 func encryptHandle() {
 	if len(os.Args) < 3 {
-		Println("missing the path to the file. For more info, run --> go run . help")
+		println("missing the path to the file. For more info, run --> go run . help")
 		os.Exit(0)
 	}
 	file := os.Args[2]
@@ -62,7 +62,7 @@ func encryptHandle() {
 
 func decryptHandle() {
 	if len(os.Args) < 3 {
-		Println("missing the path to the file. For more info, run --> go run . help")
+		println("missing the path to the file. For more info, run --> go run . help")
 		os.Exit(0)
 	}
 	file := os.Args[2]

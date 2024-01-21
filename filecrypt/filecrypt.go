@@ -4,7 +4,7 @@ import (
 	"crypto/aes"
 	"crypto/cipher"
 	"crypto/rand"
-	"crypto/sha512"
+	"crypto/sha1"
 	"encoding/hex"
 	"io"
 	"os"
@@ -37,7 +37,7 @@ func Encrypt(source string, password []byte) {
 		panic(err.Error())
 	}
 
-	dk := pbkdf2.Key(key, nonce, 4096, 32, sha512.New)
+	dk := pbkdf2.Key(key, nonce, 4096, 32, sha1.New)
 
 	block, _ := aes.NewCipher(dk)
 	if err != nil {
@@ -87,7 +87,7 @@ func Decrypt(source string, password []byte) {
 	str := hex.EncodeToString(salt)
 	nonce, err := hex.DecodeString(str)
 
-	dk := pbkdf2.Ley{name, nonce, 4096, 32, sha512.New}
+	dk := pbkdf2.Key{key, nonce, 4096, 32, sha1.New}
 	block, _ := aes.NewCipher(dk)
 	if err != nil {
 		panic(err.Error())
