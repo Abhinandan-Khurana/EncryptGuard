@@ -8,6 +8,7 @@ import (
 	"syscall"
 
 	"github.com/Abhinandan-Khurana/EncryptGuard/filecrypt"
+	"github.com/fatih/color"
 	"golang.org/x/sys/windows"
 	"golang.org/x/term"
 )
@@ -34,14 +35,22 @@ func main() {
 }
 
 func printHelp() {
+	magenta := color.New(color.FgMagenta).Add(color.Bold)
+	blue := color.New(color.FgCyan).Add(color.Bold)
+	green := color.New(color.FgGreen).Add(color.Bold)
+	yellow := color.New(color.FgYellow).Add(color.Bold)
 	fmt.Println("")
-	fmt.Println("File Encryption")
+	magenta.Println(`
+____ _  _ ____ ____ _   _ ___  ___ ____ _  _ ____ ____ ___  
+|___ |\ | |    |__/  \_/  |__]  |  | __ |  | |__| |__/ |  \ 
+|___ | \| |___ |  \   |   |     |  |__] |__| |  | |  \ |__/ 																
+`)
 	fmt.Println("")
-	fmt.Println("Usage:")
+	blue.Println("Usage:")
 	fmt.Println("")
-	fmt.Println("\t go run . encrypt /path/tp/your.file")
+	yellow.Println("\t go run . encrypt /path/tp/your.file")
 	fmt.Println("")
-	fmt.Println("Commands:")
+	green.Println("Commands:")
 	fmt.Println("")
 	fmt.Println("\tEncrypt:\tEncrypt a file given a password")
 	fmt.Println("\tDecrypt:\tDecrypt a file using a password")
@@ -50,6 +59,9 @@ func printHelp() {
 }
 
 func encryptHandle() {
+	magenta := color.New(color.FgMagenta).Add(color.Bold)
+	green := color.New(color.FgGreen).Add(color.Bold)
+
 	if len(os.Args) < 3 {
 		println("missing the path to the file. For more info, run --> go run . help")
 		os.Exit(0)
@@ -59,12 +71,14 @@ func encryptHandle() {
 		panic("File not found!")
 	}
 	password := getPassword()
-	fmt.Println("\nEncrypting...")
+	magenta.Println("\nEncrypting...")
 	filecrypt.Encrypt(file, password)
-	fmt.Println("\n File successfully protected!")
+	green.Println("\n File successfully protected!")
 }
 
 func decryptHandle() {
+	green := color.New(color.FgGreen).Add(color.Bold)
+	magenta := color.New(color.FgMagenta).Add(color.Bold)
 	if len(os.Args) < 3 {
 		println("missing the path to the file. For more info, run --> go run . help")
 		os.Exit(0)
@@ -75,26 +89,29 @@ func decryptHandle() {
 	}
 	fmt.Println("Enter Password:")
 	password, _ := readPassword()
-	fmt.Println("\nDecrypting...")
+	magenta.Println("\nDecrypting...")
 	filecrypt.Decrypt(file, password)
-	fmt.Println("\n File successfully decrypted!")
+	green.Println("\n File successfully decrypted!")
 }
 
 func getPassword() []byte {
-	fmt.Print("Enter Password:")
+	yellow := color.New(color.FgYellow).Add(color.Bold)
+	red := color.New(color.FgRed).Add(color.Bold)
+
+	fmt.Print("Set Password:")
 	password, err := readPassword()
 	if err != nil {
-		fmt.Println("\nFailed to read password. Error:", err)
+		red.Println("\nFailed to read password. Error:", err)
 		os.Exit(1)
 	}
 	fmt.Print("\nConfirm Password: ")
 	password2, err := readPassword()
 	if err != nil {
-		fmt.Println("\nFailed to read password. Error:", err)
+		red.Println("\nFailed to read password. Error:", err)
 		os.Exit(1)
 	}
 	if !validatePassword(password, password2) {
-		fmt.Print("\nPasswords do not match, try again!\n")
+		yellow.Print("\nPasswords do not match, try again!\n")
 		return getPassword()
 	}
 	return password
