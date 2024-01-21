@@ -4,8 +4,11 @@ import (
 	"bytes"
 	"fmt"
 	"os"
+	"runtime"
+	"syscall"
 
 	"github.com/Abhinandan-Khurana/EncryptGuard/filecrypt"
+	"golang.org/x/sys/windows"
 	"golang.org/x/term"
 )
 
@@ -71,7 +74,7 @@ func decryptHandle() {
 		panic("File not found!")
 	}
 	fmt.Println("Enter Password:")
-	password, _ := term.ReadPassword(0)
+	password, _ := readPassword()
 	fmt.Println("\nDecrypting...")
 	filecrypt.Decrypt(file, password)
 	fmt.Println("\n File successfully decrypted!")
@@ -79,15 +82,50 @@ func decryptHandle() {
 
 func getPassword() []byte {
 	fmt.Print("Enter Password:")
-	password, _ := term.ReadPassword(0)
-	fmt.Print("\nComfirm Password: ")
-	password2, _ := term.ReadPassword(0)
+	password, err := readPassword()
+	if err != nil {
+		fmt.Println("\nFailed to read password. Error:", err)
+		os.Exit(1)
+	}
+	fmt.Print("\nConfirm Password: ")
+	password2, err := readPassword()
+	if err != nil {
+		fmt.Println("\nFailed to read password. Error:", err)
+		os.Exit(1)
+	}
 	if !validatePassword(password, password2) {
 		fmt.Print("\nPasswords do not match, try again!\n")
 		return getPassword()
 	}
 	return password
 }
+
+func readPassword() ([]byte, error) {
+	if runtime.GOOS == "windows" {
+		return term.ReadPassword(int(windows.Handle(os.Stdin.Fd())))
+	}
+	return term.ReadPassword(int(syscall.Stdin))
+}
+
+// func getPassword() []byte {
+// 	fmt.Print("Enter Password:")
+// 	password, err := term.ReadPassword(0)
+// 	if err != nil {
+// 		fmt.Println("\nFailed to read password. Error:", err)
+// 		os.Exit(1)
+// 	}
+// 	fmt.Print("\nConfirm Password: ")
+// 	password2, err := term.ReadPassword(0)
+// 	if err != nil {
+// 		fmt.Println("\nFailed to read password. Error:", err)
+// 		os.Exit(1)
+// 	}
+// 	if !validatePassword(password, password2) {
+// 		fmt.Print("\nPasswords do not match, try again!\n")
+// 		return getPassword()
+// 	}
+// 	return password
+// }
 
 func validatePassword(password1 []byte, password2 []byte) bool {
 	if !bytes.Equal(password1, password2) {
