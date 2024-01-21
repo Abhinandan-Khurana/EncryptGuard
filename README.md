@@ -31,7 +31,7 @@ EncryptGuard.exe decrypt test.jpeg
 ```
 
 <br>
-<i><u>NOTE</u>: This tool is support both for Windows and Linux</i>
-
+> [!NOTE]  
+> This tool is supports both Windows and Linux.
 <br>
 <img src="./assets/menu.png">
