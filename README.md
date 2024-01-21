@@ -1,11 +1,11 @@
-<center>
-<pre>
+<pre align="center">
 ____ _  _ ____ ____ _   _ ___  ___ ____ _  _ ____ ____ ___  
 |___ |\ | |    |__/  \_/  |__]  |  | __ |  | |__| |__/ |  \ 
 |___ | \| |___ |  \   |   |     |  |__] |__| |  | |  \ |__/ 
                                                             
 </pre>
-</center>
+
+
 <hr><br>
 Encounter a superior layer of security with this file encryption and decryption tool written in go. This utility offers advanced protection mechanisms to safeguard your sensitive data with ease and reliability.
 
