@@ -107,26 +107,6 @@ func readPassword() ([]byte, error) {
 	return term.ReadPassword(int(syscall.Stdin))
 }
 
-// func getPassword() []byte {
-// 	fmt.Print("Enter Password:")
-// 	password, err := term.ReadPassword(0)
-// 	if err != nil {
-// 		fmt.Println("\nFailed to read password. Error:", err)
-// 		os.Exit(1)
-// 	}
-// 	fmt.Print("\nConfirm Password: ")
-// 	password2, err := term.ReadPassword(0)
-// 	if err != nil {
-// 		fmt.Println("\nFailed to read password. Error:", err)
-// 		os.Exit(1)
-// 	}
-// 	if !validatePassword(password, password2) {
-// 		fmt.Print("\nPasswords do not match, try again!\n")
-// 		return getPassword()
-// 	}
-// 	return password
-// }
-
 func validatePassword(password1 []byte, password2 []byte) bool {
 	if !bytes.Equal(password1, password2) {
 		return false
