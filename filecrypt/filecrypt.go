@@ -87,7 +87,8 @@ func Decrypt(source string, password []byte) {
 	str := hex.EncodeToString(salt)
 	nonce, err := hex.DecodeString(str)
 
-	dk := pbkdf2.Key{key, nonce, 4096, 32, sha1.New}
+	dk := pbkdf2.Key(key, nonce, 4096, 32, sha1.New)
+
 	block, _ := aes.NewCipher(dk)
 	if err != nil {
 		panic(err.Error())
