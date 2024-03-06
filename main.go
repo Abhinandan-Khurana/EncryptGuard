@@ -44,7 +44,7 @@ ____ _  _ ____ ____ _   _ ___  ___ ____ _  _ ____ ____ ___
 	fmt.Println("")
 	blue.Println("Usage:")
 	fmt.Println("")
-	yellow.Println("\t go run . encrypt /path/tp/your.file")
+	yellow.Println("\t EncryptGuard encrypt /path/tp/your.file")
 	fmt.Println("")
 	green.Println("Commands:")
 	fmt.Println("")
