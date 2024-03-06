@@ -41,7 +41,7 @@ go install -v github.com/Abhinandan-Khurana/EncryptGuard@latest
 <br>
 
 > [!NOTE]
-> This tool supports both Windows and Linux.
+> This tool supports Windows, Linux and mac.
 > <br>
 
 <img src="./assets/menu.png">
