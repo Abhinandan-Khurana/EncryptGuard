@@ -13,21 +13,21 @@ Encounter a superior layer of security with this file encryption and decryption 
 
 ```bash
 go run . help
-EncryptGuard.exe help
+EncryptGuard help
 ```
 
 <b>Encrypt</b>
 
 ```bash
 go run . encrypt test.jpeg
-EncryptGuard.exe encrypt test.jpeg
+EncryptGuard encrypt test.jpeg
 ```
 
 <b>Decrypt</b>
 
 ```bash
 go run . decrypt test.jpeg
-EncryptGuard.exe decrypt test.jpeg
+EncryptGuard decrypt test.jpeg
 ```
 
 <br>
