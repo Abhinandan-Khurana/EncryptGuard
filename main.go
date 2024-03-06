@@ -4,13 +4,9 @@ import (
 	"bytes"
 	"fmt"
 	"os"
-	"runtime"
-	"syscall"
 
 	"github.com/Abhinandan-Khurana/EncryptGuard/filecrypt"
 	"github.com/fatih/color"
-	"golang.org/x/sys/windows"
-	"golang.org/x/term"
 )
 
 func main() {
@@ -41,9 +37,9 @@ func printHelp() {
 	yellow := color.New(color.FgYellow).Add(color.Bold)
 	fmt.Println("")
 	magenta.Println(`
-____ _  _ ____ ____ _   _ ___  ___ ____ _  _ ____ ____ ___  
-|___ |\ | |    |__/  \_/  |__]  |  | __ |  | |__| |__/ |  \ 
-|___ | \| |___ |  \   |   |     |  |__] |__| |  | |  \ |__/ 																
+____ _  _ ____ ____ _   _ ___  ___ ____ _  _ ____ ____ ___
+|___ |\ | |    |__/  \_/  |__]  |  | __ |  | |__| |__/ |  \
+|___ | \| |___ |  \   |   |     |  |__] |__| |  | |  \ |__/
 `)
 	fmt.Println("")
 	blue.Println("Usage:")
@@ -117,12 +113,12 @@ func getPassword() []byte {
 	return password
 }
 
-func readPassword() ([]byte, error) {
-	if runtime.GOOS == "windows" {
-		return term.ReadPassword(int(windows.Handle(os.Stdin.Fd())))
-	}
-	return term.ReadPassword(int(syscall.Stdin))
-}
+// func readPassword() ([]byte, error) {
+// 	if runtime.GOOS == "windows" {
+// 		return term.ReadPassword(int(windows.Handle(os.Stdin.Fd())))
+// 	}
+// 	return term.ReadPassword(int(syscall.Stdin))
+// }
 
 func validatePassword(password1 []byte, password2 []byte) bool {
 	if !bytes.Equal(password1, password2) {
