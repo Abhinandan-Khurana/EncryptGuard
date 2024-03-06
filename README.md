@@ -1,13 +1,13 @@
 <pre align="center">
-____ _  _ ____ ____ _   _ ___  ___ ____ _  _ ____ ____ ___  
-|___ |\ | |    |__/  \_/  |__]  |  | __ |  | |__| |__/ |  \ 
-|___ | \| |___ |  \   |   |     |  |__] |__| |  | |  \ |__/ 
-                                                            
+____ _  _ ____ ____ _   _ ___  ___ ____ _  _ ____ ____ ___
+|___ |\ | |    |__/  \_/  |__]  |  | __ |  | |__| |__/ |  \
+|___ | \| |___ |  \   |   |     |  |__] |__| |  | |  \ |__/
+
 </pre>
 <hr>
 Encounter a superior layer of security with this file encryption and decryption tool written in go. This utility offers advanced protection mechanisms to safeguard your sensitive data with ease and reliability.
 
-## Usage 
+## Usage
 
 <b>Open help menu</b>
 
@@ -32,8 +32,16 @@ EncryptGuard.exe decrypt test.jpeg
 
 <br>
 
-> [!NOTE]  
-> This tool supports both Windows and Linux.
+## Installation
+
+```bash
+go install -v github.com/Abhinandan-Khurana/EncryptGuard@latest
+```
+
 <br>
+
+> [!NOTE]
+> This tool supports both Windows and Linux.
+> <br>
 
 <img src="./assets/menu.png">
