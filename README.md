@@ -35,7 +35,7 @@ EncryptGuard.exe decrypt test.jpeg
 ## Installation
 
 ```bash
-go install -v github.com/Abhinandan-Khurana/EncryptGuard@latest
+go install -v github.com/Abhinandan-Khurana/EncryptGuard@v1.0.0
 ```
 
 <br>
