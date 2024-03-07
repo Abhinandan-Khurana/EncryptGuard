@@ -44,13 +44,13 @@ ____ _  _ ____ ____ _   _ ___  ___ ____ _  _ ____ ____ ___
 	fmt.Println("")
 	blue.Println("Usage:")
 	fmt.Println("")
-	yellow.Println("\t EncryptGuard encrypt /path/tp/your.file")
+	yellow.Println("\t EncryptGuard encrypt /path/to/your.file")
 	fmt.Println("")
 	green.Println("Commands:")
 	fmt.Println("")
-	fmt.Println("\tEncrypt:\tEncrypt a file given a password")
-	fmt.Println("\tDecrypt:\tDecrypt a file using a password")
-	fmt.Println("\tHelp:\t\tDisplays help description")
+	fmt.Println("\tencrypt:\tEncrypt a file given a password")
+	fmt.Println("\tdecrypt:\tDecrypt a file using a password")
+	fmt.Println("\thelp:\t\tDisplays help description")
 	fmt.Println("")
 }
 
